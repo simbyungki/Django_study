@@ -35,11 +35,9 @@
 
 ## Template 상속
 - parent page
-  - <pre><code><% block conents %>
-<% endblock %>
-</code></pre>
+<pre><code><% block conents %>
+<% endblock %></code></pre>
 - child page
-  - <pre><code><% extends 'parent page file name' %>
+<pre><code><% extends 'parent page file name' %>
 <% block conents %>
-<% endblock %>
-</code></pre>
+<% endblock %></code></pre>
