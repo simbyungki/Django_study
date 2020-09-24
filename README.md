@@ -23,14 +23,24 @@
 - vscode sqlite3 실행 안되는 경우 sqlite3 다운로드 후 프로젝트에 복사하여 확인 .\sqlite3 db.sqlite3
   - https://www.sqlite.org/download.html
 
-
-
 ## 서버 실행 (어드민)
 1. 서버 실행
   - python3 manage.py runserver
 2. 어드민 계정 생성 (superuser)
   - python3 manage.py createsuperuser
 
+### 어드민 계정 찾기
+#### 계정을 알고 있는 경우
+- python manage.py changepassword 사용자ID
+
+#### 계정을 모르는 경우
+- python manage.py shell
+- from django.contrib.auth.models import User
+- User.objects.filter(is_superuser=True)
+- super_id = User.objects.get(username='admin id')
+- super_id.set_password('변경 비밀번호')
+- super_id.save()
+- exit()
 
 
 ## Template 상속
