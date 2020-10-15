@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스마트한 하루의 시작 | @Start_Up</title>
+</head>
+<body style="background:url('https://t1.daumcdn.net/cfile/tistory/995A583359893C8E32?original') no-repeat center; background-size:cover; background-position:fixed;">
+<style>
+* {margin:0; padding:0;}
+ul, li {list-style:none;}
+h1 {margin-bottom:20px; padding:25px 0 15px; text-align:center;}
+h2 {padding:12px 10px; background:#f1f1f1;}
+h2 .small {display:inline-block; margin:0 5px; font-size:12px; font-weight:400;}
+h3 {margin-bottom:15px;}
+.wrapper {padding-bottom:40px;}
+.wrapper .group_box {display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; margin:0 auto; width:95%; max-width:800px;}
+.wrapper .group {float:left; width:100%; padding:20px; border:1px solid #888; background:rgba(255,255,255,.9);}
+.wrapper .group + .group {margin-top:14px;}
+.wether .summary {padding:22px 0; font-weight:600; font-size:16px; text-decoration:underline;}
+.wether dl {border-bottom:1px solid #ccc;}
+.wether dl + dl {margin-top:8px;}
+.wether dl dt,
+.wether dl dd {display:inline-block; padding:3px; font-size:13px;}
+.wether dl dt {padding:3px 8px; font-weight:600; color:#fff; background:#000;}
+.wether .hot {color:#d00; font-weight:600;}
+.wether .cold {color:blue; font-weight:600;}
+.wether .box {padding:0 20px 20px;}
+
+.news ul {padding:20px;}
+.news ul li {padding-left:5px; height:36px; line-height:36px; border-top:1px solid #ccc;}
+.news ul li:first-child {border-top:0;}
+.news ul li a {color:#444; font-size:14px; font-weight:normal; text-decoration:none;}
+.news ul li a:hover {color:#111; text-decoration:underline;}
+
+.wise_sayings h2 {margin-bottom:20px;}
+.wise_sayings dl {padding:0 20px;}
+.wise_sayings dl + dl {margin-top:20px;}
+.wise_sayings dt, 
+.wise_sayings dd {display:block; font-size:14px;}
+.wise_sayings dd {margin-top:4px; font-weight:600; text-align:right;}
+
+.made {margin-top:30px; color:#000; font-size:12px; font-weight:600; text-align:center;}
+</style>
+
+{% load custom_filters %}
+
+	<div class="wrapper">
+		<h1>{{ date }} / @Start_Up</h1>
+		<!-- 날씨 -->
+		<div class="group_box">
+			<div class="group wether">
+				<h2>날씨 정보</h2>
+				<div class="box">
+					<p class="summary">{{ wethers.summary }}</p>
+					<dl>
+						<dt>현재 위치</dt>
+						<dd>{{ wethers.location }}</dd>
+					</dl>
+					<dl>
+						<dt>최고 기온</dt>
+						<dd class="{{ wethers.temps.0|get_temp_class }}">{{ wethers.temps.0 }}˚C</dd>
+					</dl>
+					<dl>
+						<dt>최저 기온</dt>
+						<dd class="{{ wethers.temp_class.1 }}">{{ wethers.temps.1 }}˚C</dd>
+					</dl>
+					<dl>
+						<dt>평균 기온</dt>
+						<dd class="{{ wethers.temp_class.2 }}">{{ wethers.temps.2 }}˚C</dd>
+					</dl>
+					<dl>
+						<dt>미세 먼지</dt>
+						<dd>{{ wethers.dust01 }}</dd>
+					</dl>
+					<dl>
+						<dt>초미세 먼지</dt>
+						<dd>{{ wethers.dust02 }}</dd>
+					</dl>
+				</div>
+			</div>
+			<div class="group news">
+				<h2>헤드라인 뉴스</h2>
+				<div class="box">
+					<ul>
+						{% for headline in headline_news %}
+						<li><a href="{{ headline.2 }}" target="_blank" title="새창열기">{{ headline.1|truncatewords:50 }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<div class="group news">
+				<h2>IT 뉴스</h2>
+				<div class="box">
+					<ul>
+						{% for it in it_news %}
+						<li><a href="{{ it.1 }}" target="_blank" title="새창열기">{{ it.0|truncatewords:50 }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<div class="group wise_sayings">
+				<h2>해외 명언</h2>
+				<dl>
+					<dt>{{ wise_sayings.0 }}</dt>
+					<dd>- {{ wise_sayings.1 }} -</dd>
+				</dl>
+				<dl>
+					<dt>{{ wise_sayings.2 }}</dt>
+					<dd>- {{ wise_sayings.3 }} -</dd>
+				</dl>
+			</div>
+		</div>
+		<p class="made">Made by @Start_Up</p>
+	</div>
+</body>
+</html>
+
+
+5,000 심이솔
+4376 25964 03951 김경아
+4376 25964 03951
